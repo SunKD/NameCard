@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Contact Card</title>
+    <script>
+       $(document).ready(function(){
+           $('#name_cards').hide();
+           var desc, first, last, temp;
+            $(document).on('submit', '#form_box', function(){
+                first = $(".first_name").val();
+                last = $(".last_name").val();
+                desc = $(".textarea").val();
+                $('#name_cards').show();
+                
+                $("#name_cards").append("<div id='card'><div class='name'><h1>" +
+                    first + " " + last + 
+                    "</h1><h3>Click for description!</h3></div><div class='description'><h3>"+ 
+                    desc + "</h3></div></div>");
+                return false;
+            });
+                $("#name_cards").on('click', '#card', function(){
+                    $(this).children().toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <form id="form_box">
+            First Name: <input type="text"class="input_box first_name" ><br>
+            Last Name: <input type="text"class="input_box last_name"><br>
+            Description:<br>
+            <textarea class="textarea"></textarea><br>
+            <input type="submit" value ="Add User" class="add_user">
+        </form>
+        <div id="name_cards">
+        </div>
+    </div>
+</body>
+</html>
